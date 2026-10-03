@@ -48,7 +48,8 @@ const OutputPin gpMotor{*DRV_GP1_GPIO_Port,DRV_GP1_Pin};
  * 50, 100, 125, 250, 500, 1000 kbit
  */
 #include "CANPort2B.h"
-const auto canpresetentries = std::to_array<CANPortHardwareConfig::PresetEntry>({{0x001b0037,50000,"50k"},{0x001b001b,100000,"100k"},{0x001c0014,125000,"125k"},{0x001a000b,250000,"250k"},{0x001a0005,500000,"500k"},{0x001a0002,1000000,"1000k"}});
+// 修改後程式碼：放寬時脈抖動容錯
+const auto canpresetentries = std::to_array<CANPortHardwareConfig::PresetEntry>({{0x001b0037,50000,"50k"},{0x001b001b,100000,"100k"},{0x001c0014,125000,"125k"},{0x001a000b,250000,"250k"},{0x002a0005,500000,"500k"},{0x002a0002,1000000,"1000k"}});
 CANPortHardwareConfig canpresets = CANPortHardwareConfig(true,canpresetentries);
 const OutputPin canSilentPin = OutputPin(*CAN_S_GPIO_Port, CAN_S_Pin);
 CANPort_2B canport_base{CANPORT,canpresets,&canSilentPin};
