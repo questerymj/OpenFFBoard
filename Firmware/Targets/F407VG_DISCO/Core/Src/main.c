@@ -473,6 +473,7 @@ static void MX_CAN1_Init(void)
 	  /* Notification Error */
 	  Error_Handler();
 	}
+	CAN1->BTR = 0x002a0002; // 這是在 42MHz 下，Prescaler=3, TS1=11, TS2=2 的硬體 1M 暫存器十六進制值
 	HAL_GPIO_WritePin(CAN_S_GPIO_Port, CAN_S_Pin, GPIO_PIN_RESET);
 	HAL_CAN_Start(&hcan1);
 
