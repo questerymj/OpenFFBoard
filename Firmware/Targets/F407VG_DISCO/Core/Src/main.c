@@ -284,6 +284,10 @@ static void MX_NVIC_Init(void)
   /* DMA2_Stream0_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+	  // ==================== 手動補上 CAN1 接收中斷 ====================
+  HAL_NVIC_SetPriority(CAN1_RX0_IRQn, 5, 0); // 中斷優先級設為 5
+  HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);        // 啟用中斷
+  // ===============================================================
 }
 
 /**
